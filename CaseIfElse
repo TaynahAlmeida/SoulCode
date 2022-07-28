@@ -1,0 +1,163 @@
+//Defina um valor e escreva a mensagem ‘É MAIOR QUE 10!’ se o valor lido for maior que 10, caso contrário escrever NÃO É MAIOR QUE 10!  
+
+integer num = 20;
+  
+if(num > 10){
+    System.debug('É MAIOR QUE 10!');
+    }
+else if(num < 10){
+    system.debug('NÃO É MAIOR QUE 10!');
+ }
+
+
+//Defina um valor e escreva se é positivo ou negativo (considere o valor zero como positivo). 
+
+
+integer Num = 10;
+
+if (Num>0){
+    system.debug('Esse número é positivo');
+    
+}
+else {
+    system.debug('Esse número é negativo');
+}
+
+
+//Ler dois valores (considere que não serão lidos valores iguais) e escrevê-los em ordem crescente. 
+
+integer a= 100;
+integer b=50;
+
+if (a>b){
+  System.debug('Ordem crescente:'+ b +'-'+ a);  
+}else{
+    System.debug('Ordem crescente: '+ a+'-' + b);
+}
+  
+//Ler dois valores (considere que não serão lidos valores iguais) e escrever o maior deles
+
+integer Valor1, Valor2;
+Valor1 = 1;
+Valor2 = 2;
+if {
+(Valor1 > Valor2){system.debug('Valor maior = ' + V1 );
+}
+Else{
+system.debug('Valor maior = ' + V2 );
+}
+
+
+
+//Ler o ano atual e o ano de nascimento de uma pessoa. Escrever uma mensagem que diga se ela poderá ou não votar este ano 
+//(não é necessário considerar o mês em que a pessoa nasceu). 
+
+
+integer AnoAtual = 2022;
+integer AnoDeNascimento = 2004; 
+
+system.debug('Ano de nascimento= ' + AnoDeNascimento);
+system.debug('Ano atual= ' + AnoAtual);
+
+integer sub;
+
+sub = AnoAtual - AnoDeNascimento;
+
+if(sub >= 18){
+    system.debug('Voce ja pode votar');
+}
+
+else {
+    System.debug('Voce nao pode votar');
+}
+
+
+//Defina as notas da 1a. e 2a. avaliações de um aluno. Calcular a média aritmética simples 
+//e escrever uma mensagem que diga se o aluno foi ou não aprovado (considerar que nota igual ou maior que 6 o aluno é aprovado). Escrever também a média calculada. 
+decimal A1 = 0.0;
+decimal A2 = 8.0;
+
+decimal media = (A1 + A2) / 2;
+
+if (media < 6.0){
+    system.debug('Voce nao foi aprovado');
+}
+
+else {
+    system.debug('Voce foi aprovado');
+}
+
+
+
+//Defina dois valores e imprimir uma das três mensagens a seguir: 
+//‘Números iguais’, caso os números sejam iguais
+//‘Primeiro é maior’, caso o primeiro seja maior que o segundo;
+//‘Segundo maior’, caso o segundo seja maior que o primeiro.
+
+
+integer v1 = 10;
+integer v2 = 11;
+
+if (v1 == v2){
+    system.debug('Numeros iguais');
+}else if (v1 > v2){
+    system.debug('O primeiro é maior');
+    
+}else if (v1 < v2){
+    system.debug('O segundo é maior');
+}
+
+//Faça um algoritmo para definir: a descrição do produto (nome), a quantidade adquirida e o preço unitário. 
+//Calcular e escrever o total (total = quantidade adquirida * preço unitário), o desconto e o total a pagar (total a pagar = total - desconto), sabendo-se que: 
+//Se quantidade <= 5 o desconto será de 2% - 
+//Se quantidade > 5 e quantidade <=10 o desconto será de 3% - 
+//Se quantidade > 10 o desconto será de 5%
+
+
+String nome ='TV';
+integer qtde = 20;
+decimal preco = 2000;
+decimal total = preco * qtde;
+decimal desconto;
+
+System.debug('Valor sem o desconto: R$' + total);
+
+if(qtde <= 5){
+    total-= total*0.02; //total = total - (total*0.02)
+}else if(qtde > 5 && qtde <=10){
+    desconto = total*0.03;
+    total = total - desconto;
+}else{
+    desconto = total*0.05;
+    total = total - desconto;
+}
+
+System.debug('Valor COM DESCONTO: R$' + total)
+
+//Faça um algoritmo para ler: número da conta do cliente, saldo, débito e crédito. Após, calcular e escrever o saldo atual (saldo atual = saldo - débito + crédito). 
+//Também testar se saldo atual for maior ou igual a zero escrever a mensagem 'Saldo Positivo', senão escrever a mensagem 'Saldo Negativo
+//Decimal saldoAnterior, saldoAtual, debito, credito;
+
+Integer numeroConta;
+String nomeCliente;
+nomeCliente = 'Antenor';
+numeroConta = 225588;
+saldoAnterior = 2158.65;
+debito = 857.94;
+credito = 1412.89;
+
+saldoAtual = ( (saldoAnterior - debito) + credito );
+
+System.debug('Olá, ' + nomeCliente);
+System.debug('Bem-vindo(a) de volta ao Santana Invest, você está vendo sua contano '+numeroConta);
+System.debug('Seu saldo anterior era de R$'+saldoAnterior);
+System.debug('Houve um total de R$'+credito+' créditos em sua conta');
+System.debug('Houve um total de R$'+debito+' débitos em sua conta');
+System.debug('Seu saldo atual é de R$ '+saldoAtual);
+
+if (saldoAtual >= 0) {
+System.debug('Seu saldo está positivo!');
+} else  {
+System.debug('Seu saldo está negativo');
+}
+
