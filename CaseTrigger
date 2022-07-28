@@ -1,0 +1,55 @@
+//Crie uma trigger em Lead que antes de inserir um novo lead, coloque informações nos campos fax (XX) XXXXX - XXXX, Site www.example.com, e receita anual 0.
+
+trigger leadTrigger on Lead (before insert) {
+    for(Lead lead: Trigger.new){
+        lead.fax = '(xx) xxxx-xxxx';
+        lead.Website = 'www.example.com';
+        lead.AnnualRevenue = 0;
+    }
+}
+
+
+// altere o código da trigger de Lead realizando condições para verificar se:
+//se o fax estiver vazio, atribuir sem fax 
+//se site estiver vazio, atribuir site indefinido
+//se receita anual estiver vazio, atribuir 0
+
+
+trigger leadTrigger on Lead (before insert) {
+    for(Lead lead: Trigger.new){
+        if(lead.fax == null){
+            lead.fax = 'sem fax';
+        }
+        if(lead.Website == null){
+            lead.Website = 'site indefinido';
+        }
+        if(lead.AnnualRevenue == null){
+            lead.AnnualRevenue = 0;
+        }
+    }
+}
+
+
+//atualize o código da trigger de Lead, adicionando as seguintes condições:
+
+trigger leadTrigger on Lead (before insert) {
+    for(Lead lead: Trigger.new){
+        if(lead.fax == null){
+            lead.fax = 'sem fax';
+        }
+        if(lead.Website == null){
+            lead.Website = 'site indefinido';
+        }
+        if(lead.AnnualRevenue == null){
+            lead.AnnualRevenue = 0;
+        }
+        if(lead.AnnualRevenue >= 0 && lead.AnnualRevenue <10000){
+            lead.Rating = 'Cold';
+        }else if(lead.AnnualRevenue >= 10000 && lead.AnnualRevenue <100000){
+            lead.Rating = 'Warm';
+        }else{
+            lead.Rating = 'Hot';
+        }
+        
+    }
+}
