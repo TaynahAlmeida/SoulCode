@@ -53,3 +53,88 @@ trigger leadTrigger on Lead (before insert) {
         
     }
 }
+
+
+//1 - Antes de atualizar uma oportunidade, Se a fase anterior estiver fechada e perdida e tentarem alterar para qualquer outra nova fase. Emitir mensagem de erro.
+//2 - Após a atualização de uma oportunidade, se o valor for maior ou igual a 50000 e a fase estiver fechada e ganha, crie uma tarefa associada a ela, com o assunto: 
+//Parabenizar a empresa pela nova aquisição.
+//4 - Em oportunidade, quando a fase for alterada para Closed Lost, deve ser inserido um motivo. Se a fase estiver em Closed Lost e motivo estiver vazio,
+//emitir uma mensagem de erro. O motivo deve ser preenchido.
+
+
+*1, 2 e 4
+trigger OppTrigger on Opportunity (before update, after update) {
+/*Antes de atualizar uma oportunidade, 
+* Se a fase anterior estiver fechada e perdida e 
+* tentarem alterar para qualquer outra nova fase. Emitir mensagem de erro.
+*/    
+    if(trigger.isBefore && trigger.isUpdate){
+        
+        for(Opportunity opp: Trigger.new){            
+            if(trigger.oldMap.get(opp.id).StageName == 'Closed Lost' && (
+                opp.StageName == 'Prospecting'||opp.StageName == 'Qualification'||
+                opp.StageName == 'Needs Analysis'||opp.StageName == 'Value Proposition'||
+                opp.StageName == 'Id. Decision Makers'||opp.StageName == 'Perception Analysis'||
+                opp.StageName == 'Proposal/Price Quote'||opp.StageName == 'Negotiation/Review'||
+                opp.StageName == 'Closed Won')){
+                    opp.addError('Oportunidade perdida não pode ser alterada');
+                }
+        }
+    }
+/*
+     * Após a atualização de uma oportunidade, 
+     * se o valor for maior ou igual a 50000 e a fase estiver fechada e ganha,
+     *  crie uma tarefa associada a ela, com o assunto: Parabenizar a empresa pela nova aquisição.
+*/
+     if(trigger.IsAfter && trigger.IsUpdate){
+          List<task> itemLista= new List<task> ();
+        for(Opportunity opp: trigger.new){
+           
+           if(opp.Amount >= 50000 && opp.stageName == 'Closed Won'){
+                //criar nova task
+                Task task = new task(
+                Subject = 'Parabenizar a empresa pela nova aquisição',
+                WhatId = opp.Id
+                    
+                );
+             itemLista.add(task);
+           }
+        }
+        insert itemLista;
+    } 
+    
+/*   Em oportunidade, quando a fase for alterada para Closed Lost, 
+     * deve ser inserido um motivo. Se a fase estiver em Closed Lost e 
+     * motivo estiver vazio, emitir uma mensagem de erro. O motivo deve ser preenchido.
+*/
+    if(trigger.IsBefore && trigger.IsUpdate){
+        for(Opportunity opp : trigger.new){
+            if(opp.StageName== 'Closed Lost' && opp.motivo__c== null){
+                opp.addError('O motivo deve ser preenchido.');
+            }
+        }
+        
+    }
+}
+
+========================================================================
+3// Após inserir um Lead, a receita anual estiver superior a 50000, criar uma tarefa com assunto verificar se o cadastro está completo associado ao lead.
+
+
+trigger LeadATrigger on Lead (after insert) {
+    /*Após inserir um Lead, se a receita anual estiver superior a 50000,
+*criar uma tarefa com assunto verificar se o cadastro está completo associado ao lead.
+*/
+    List<task> ListNewTask = new List<task>();
+    for(Lead lead: trigger.new){
+        if(lead.AnnualRevenue > 50000){
+            task newtask = new task(
+                subject = 'Verificar se o cadastro do Lead está completo',
+                whoId = lead.Id
+            );
+          ListNewTask.add(newtask);  
+        }        
+    } 
+    insert ListNewTask;  
+}
+
