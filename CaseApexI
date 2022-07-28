@@ -1,0 +1,102 @@
+//algoritmo que define  um valor inteiro e escreva na tela seu valor.
+integer Clientes = 45;
+system.debug(Clientes);
+
+-------------------------------------------------------------------------
+
+//algoritmo que tenha nome de produto e preço exiba na tela os valores.
+
+decimal ValorProduto = 50.69;
+string NomeProduto = 'Calça jeans’;
+System.debug('O item: ' + NomeProduto + ' Custa:' + ValorProduto);
+
+—------------------------------------------------------------------------
+
+//algoritmo que define um valor inteiro e escreve (na tela) o seu antecessor. 
+
+integer ValorInteiro = 50;
+system.debug('O antecessor de ' + ValorInteiro + ' é: ' + -- ValorInteiro);
+
+—------------------------------------------------------------------------
+
+//algoritmo com dois valores reais, soma os valores e exiba o resultado.
+
+integer ValorReal1 = 50;
+integer ValorReal2 = 60;
+
+integer s = ValorReal1 + ValorReal2;
+
+System.debug('A soma dos valores é igual a: ' + s);
+
+—------------------------------------------------------------------------
+
+//um algoritmo que recebe uma idade, subtrai do ano atual e exibe o resultado, mostrando ‘Nascido em (valorDaSubtração)’.
+
+integer AnoAtual = 2022;
+integer Idade = 18;
+
+integer sb = AnoAtual - Idade;
+
+system.debug('Nascido em: ' + sb);
+
+—---------------------------------------------------------------------------
+
+//algoritmo para definir as dimensões de um retângulo (base e altura), calcula e escreve a área do retângulo.
+
+integer Base = 5;
+integer Altura = 20; 
+
+integer Dimensoes = Base * Altura;
+
+system.debug('A area do retangulo é igual a: ' + Dimensoes);
+
+------------------------------------------------------------------------------
+
+//algoritmo para definir o salário mensal atual de um funcionário e o percentual de reajuste de 25%. Calcula e escreve o valor do novo 
+//salário com o acréscimo do reajuste.
+
+integer salario = 1000;
+decimal reajusteSalario = salario * 0.25 ;
+system.debug(reajusteSalario);
+
+—---------------------------------------------------------------------------------------
+//algoritmo que atribui 3 notas, calcula a média e exibe o resultado.
+
+decimal nota1 = 10;
+decimal nota2 = 9.5;
+decimal nota3 = 7.5;
+
+decimal soma;
+
+soma = nota1 + nota2 + nota3;
+
+decimal media;
+
+media = soma / 3;
+system.debug('Sua media final é igual a ' + media);
+
+—------------------------------------------------------------------------------------------
+//algoritmo que define três notas de um aluno, calcula e escreve a média final deste aluno. 
+//Considerar que a média é ponderada e que o peso das notas é 2, 3 e 5.
+
+decimal nota1 = 10;
+decimal nota2 = 9.5;
+decimal nota3 = 7.5;
+
+decimal soma;
+
+soma = nota1 + nota2 + nota3;
+
+decimal media;
+
+media = soma / 3;
+
+decimal multDosPesos;
+
+multDosPesos = (nota1 * 2) + (nota2 * 3) + (nota3 * 5);
+
+decimal mediaPonderada;
+
+mediaPonderada = multDosPesos / 10; 
+
+system.debug('Sua media final é igual a ' + mediaPonderada);
