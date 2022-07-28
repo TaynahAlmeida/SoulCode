@@ -1,0 +1,149 @@
+//Crie uma classe Gato, com os atributos string nome, peso, raça, com os seguintes métodos: 	
+//método miar, que imprime:  *nome*  disse: MIAAAAAUU.
+//método andar, que imprime: *nome* está andando.
+//método roronar, que imprime: “nome* está roronando.
+//método infoGato, que imprime os valores dos atributos nome, peso, raça.
+
+public class Gato {
+    public string nome;
+    public integer peso;
+    public string raca;
+    
+    public void miar(){
+        system.debug('O ' + nome + ' disse MIAUUUU');
+    }
+    public void andar(){
+        system.debug('o ' + nome + ' está andando');
+    }
+    public void roronar(){
+        system.debug('O ' + nome + ' está roronando');
+    } 
+    public void infoGato(){
+        system.debug('Nome: ' + nome + ' Raça: ' + raca + ' Peso: ' + peso);
+    }
+}
+
+Objeto- 
+
+Gato g = new Gato(); 
+
+g.nome = 'Otavio';
+g.peso = 10;
+g.raca = 'Preto';
+
+g.miar();
+g.andar();
+g.roronar();
+g.infoGato();
+
+
+
+//Crie uma classe chamada Pizzaria, com o seguinte método:
+//pedir(String pizza), com o parâmetro recebido verifique:
+//		Se pizza igual a Calabresa, imprimir:
+//		  Pizza de Calabresa, valor R$ 45,00
+//  Se pizza igual a 4 Queijos, imprimir:
+//		Pizza 4 Queijos, valor R$ 50,00
+//  Se pizza igual a Maria Bonita, imprimir:
+//			Pizza Maria Bonita, R$ 60,00
+//	Senão, imprimir
+//			Não possuímos essa Pizza.
+
+ public class Pizzaria {
+    
+    public void pedir(string pizza){
+        if(pizza == 'calabresa'){
+            system.debug('Pizza de Calabresa, valor R$ 45,00');
+        }
+        else if(pizza == '4 queijos'){
+            system.debug('Pizza 4 Queijos, valor R$ 50,00');
+        }
+        else if(pizza == 'Maria bonita'){
+            system.debug('Pizza Maria Bonita, R$ 60,00');
+        }
+        else{
+            system.debug('Não possuímos essa pizza');
+        }
+    }
+}
+
+metodos -
+
+Pizzaria p = new Pizzaria(); 
+
+p.pedir(‘frango’);
+p.pedir(‘calabresa’);
+p.pedir(‘4 queijos’);
+p.pedir(‘maria bonita’);
+
+
+
+//Crie uma classe chamada CalculadoraMagica, que tenha as funções abaixo. Todas as funções devem receber dois parâmetros(a,b) inteiros 
+//e devem retornar o resultado para fora da função.
+
+//somar - retorna a soma de a e b
+//subtrair - retorna a subtração de a e b
+//dividir - retorna a divisão de a e b
+//multiplicar - retorna a multiplicação de a e b
+//quadradoDeA - retorna o valor de a ao quadrado.
+//quadradoDeB - retorna o valor de b ao quadrado.
+//aMaior - verifica se A é maior que B, se sim retorna A é maior, senão retorna A não é maior.
+//media - retorna a media de a e b.
+
+public class Calculadora {
+    public decimal valorA;
+    public decimal valorB;
+    
+    public void soma(){
+        system.debug('A soma dos numeros ' + valorA +  valorB + ' é igual a: ' + (valorA + valorB));
+    }
+    public void subtrair (){
+        system.debug('A subtração dos numeros ' + valorA +  valorB + ' é igual a: ' + (valorA - valorB));
+    }
+    public void multiplicar(){
+        system.debug('A multiplicação dos numeros ' + valorA +  valorB + ' é igual a: ' + (valorA * valorB));
+    }
+    public void dividir(){
+        system.debug('A divisão dos numeros ' + valorA +  valorB + ' é igual a: ' + (valorA / valorB));
+    }
+    public void quadradoA(){
+        system.debug('A raiz quadrada de ' + valorA + ' é igual a: ' + (valorA * valorA));
+    }
+    public void quadradoB(){
+        system.debug('A raiz quadrada de ' + valorB + ' é igual a: ' + (valorB * valorB));
+    }
+    public void aMaior(){
+        if(valorA > valorB){
+        	system.debug( valorA + ' é maior que ' + valorB);
+        }
+        else{
+            system.debug( valorA + ' é menor que ' + valorB);
+        }
+    }
+    public void media(){
+        system.debug('A media dos numeros ' + valorA + valorB + ' é igual a: ' + ((valorA + valorB) / 2));
+    }
+}
+
+
+
+
+
+
+
+
+metodos - 
+
+Calculadora calc = new Calculadora(); 
+
+calc.valorA = 50;
+calc.valorB = 10;
+
+calc.soma();
+calc.subtrair();
+calc.dividir();
+calc.multiplicar();
+calc.quadradoA();
+calc.quadradoB();
+calc.aMaior();
+calc.Media();
