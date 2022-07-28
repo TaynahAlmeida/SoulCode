@@ -1,0 +1,219 @@
+//Com Apex, insira 2 leads atribuindo valores aos campos considerados obrigatórios. Essa questão deve ser feita SEM LISTA e usando a notação de construtor.
+
+Lead newLead = new Lead(
+    firstName='Giovana',
+    lastName='Bertoldo',
+    Phone='54545679',
+    Company='Soulcode'
+    
+);
+
+insert newLead;
+
+Lead newLead2 = new Lead(
+    firstName='Giovana',
+    lastName='Bertoldo',
+    Phone='54545679',
+    Company='Soulcode'
+);
+
+insert newLead2;
+
+
+//Com Apex, insira 2 oportunidades atribuindo valores aos campos considerados obrigatórios. Essa questão deve ser feita SEM LISTA e usando atribuição direta no objeto.
+
+Opportunity newOpp1 = new Opportunity(
+    name='Max',
+    Type='New Customer',
+    Amount = 40000,
+    StageName='Prospecting',
+    CloseDate = Date.newInstance(2022, 07, 29)
+);
+
+insert newOpp1;
+
+
+Opportunity newOpp2 = new Opportunity (
+    name='Dustin',
+    Type='New Customer',
+    Amount = 900000,
+    StageName='Closed Won',
+    CloseDate = Date.newInstance(2022, 07, 25)
+);
+
+insert newOpp2;
+
+
+
+
+
+
+//Com Apex, insira uma lista de 10 Contatos com valores obrigatórios, utilizando apenas um insert.
+
+
+Contact ctt1= new Contact(firstName = 'Steven', lastName = 'Harrington', Phone = '83671637186');
+Contact ctt2= new Contact(firstName = 'Dustin', lastName = 'Henderson', Phone = '363626727363');
+Contact ctt3= new Contact(firstName = 'Nancy', lastName = 'Wheller', Phone = '1111111111');
+Contact ctt4= new Contact(firstName = 'Mike', lastName = 'Wheller', Phone = '123612376123');
+Contact ctt5= new Contact(firstName = 'Lucas', lastName = 'Sinclair', Phone = '883712366648');
+Contact ctt6= new Contact(firstName = 'Jim', lastName = 'Hopper', Phone = '12331234222');
+Contact ctt7= new Contact(firstName = 'Will', lastName = 'Byers', Phone = '31312312312');
+Contact ctt8= new Contact(firstName = 'Jane', lastName = 'Byers', Phone = '534534532543');
+Contact ctt9= new Contact(firstName = 'Joyce', lastName = 'Byers', Phone = '485476578465');
+Contact ctt10= new Contact(firstName = 'Maxine', lastName = 'Mayfield', Phone = '0989089087');
+
+list<Contact> contatos = new List<Contact>();
+contatos.add(ctt1);
+contatos.add(ctt2);
+contatos.add(ctt3);
+contatos.add(ctt4);
+contatos.add(ctt5);
+contatos.add(ctt6);
+contatos.add(ctt7);
+contatos.add(ctt8);
+contatos.add(ctt9);
+contatos.add(ctt10);
+
+insert contatos;
+
+
+
+//Com Apex, crie uma oportunidade, a oportunidade deverá ter um nome, valor de 600000 e fase Qualification, origem do Lead Other e outros campos obrigatórios.
+//Associe a oportunidade a qualquer registro de sua org através do campo accountId.
+
+Opportunity op = new Opportunity(
+    name='Lucas',
+    Type='New Customer',
+    Amount = 600000,
+    StageName='Qualification',
+    CloseDate = Date.newInstance(2022, 07, 29),
+    LeadSource = 'Other',
+    accountId = '0018a00001tsP9xAAE'
+);
+
+insert op;
+
+
+//Com Apex, crie uma conta chamada AtividadeBraba, hot, telefone  88998877, receita anual 450000 e após isso crie 2 contatos associados a essa conta, contato B1 e B2
+//e 1 oportunidade também, atenção aos campos obrigatórios e a associação(accountid).
+
+Account newAcc = New Account(
+    name ='AtividadeBraba',
+    Rating ='Hot',
+    annualrevenue = 450000,
+    phone='88998877'
+);
+
+insert newAcc;
+
+Contact ctt0 = new Contact(
+    lastName='b1',
+    phone ='9789789',
+    accountId= newAcc.id
+);
+
+Contact ctt1 = new Contact(
+    lastName='b2',
+    phone ='47328497',
+    accountId= newAcc.id
+);
+
+Opportunity opp = new Opportunity(
+    name='Oportunidade da conta/contato',
+    Type='New Customer',
+    StageName='Qualification',
+    CloseDate = Date.newInstance(2022, 07, 29),
+    accountId= newAcc.id
+);
+
+insert ctt0;
+insert ctt1;
+insert opp;
+
+
+//Com Apex, atualize 3 registros de conta de sua escolha alterando valores dos campos nome, telefone e classificação, prioridade do cliente e receita anual.
+
+
+Account acc1 = New Account(
+    name ='Fernanda Montenegro',
+    Rating ='Hot',
+    annualrevenue = 450000,
+    phone='88998877',
+    id = '0018a00001tsP9xAAE'
+);
+
+update acc1;
+
+Account acc2 = New Account(
+    name ='Willison Gabriel',
+    Rating ='Hot',
+    annualrevenue = 500000,
+    phone='3719273',
+    id = '0018a00001rNui9AAC'
+);
+
+update acc2;
+
+Account acc3 = New Account(
+    name ='Aline barros',
+    Rating ='Hot',
+    annualrevenue = 900000,
+    phone='3726387',
+    id = '0018a00001tHXDuAAO'
+);
+
+update acc3;
+
+
+//Com Apex, atualize o estado/província de cobrança para CE de todas as contas que possuem o estado/província vazios(null).
+
+List<Account> listaAcc = [SELECT BillingState  From  Account where BillingState= null];
+
+for(Account a: listaAcc){
+    a.BillingState = 'CE';
+}
+
+update listaAcc;
+
+//Com Apex, atualize todos os leads que não possuem classificação para COLD.
+
+List<Lead> leads = [SELECT Rating  From  Lead where Rating= null];
+
+for(Lead L: leads){
+    L.Rating = 'COLD';
+}
+
+update leads;
+
+//Delete 3 registros de sua escolha em Oportunidade e Contas.
+
+Account acc1 = New Account(
+id = '0018a00001tsQrZAAU'
+);
+
+delete acc1;
+
+Account acc2= New Account(
+id = '0018a00001tsQrZAAU'
+);
+
+delete acc2;
+
+
+Opportunity opp = New Opportunity(
+id = '0018a00001tsQrZAAU'
+);
+
+delete opp;
+
+Opportunity opp1 = New Opportunity(
+id = '0018a00001tsQrZAAU'
+);
+
+delete opp1;
+
+Opportunity opp2 = New Opportunity(
+id = '0018a00001tsQrZAAU'
+);
+
+delete opp2;
